@@ -7,7 +7,7 @@ const Sandbox = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowMessage(true);
-    }, 5000);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
