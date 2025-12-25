@@ -1,4 +1,6 @@
-import Sandbox from "./final/04-user-interactions/Sandbox";
+// import Sandbox from "./final/04-user-interactions/Sandbox";
+
+import Sandbox from "./tutorial/06-reviews-app/Sandbox";
 
 function App() {
   return (
