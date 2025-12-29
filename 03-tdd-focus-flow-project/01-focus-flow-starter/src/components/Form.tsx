@@ -8,6 +8,7 @@ const Form = ({ onSubmit }: { onSubmit: (item: ItemWithoutId) => void }) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!title || !description || !category) return;
     onSubmit({ title, description, category });
   };
 

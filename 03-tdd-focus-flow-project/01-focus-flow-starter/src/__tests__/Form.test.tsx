@@ -43,4 +43,9 @@ describe("form component", () => {
       category: "urgent",
     });
   });
+  test("test if input fields are required", async () => {
+    const { submitButton } = getFormElements();
+    await user.click(submitButton);
+    expect(mockOnSubmit).not.toHaveBeenCalled();
+  });
 });
