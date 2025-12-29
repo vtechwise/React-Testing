@@ -8,6 +8,7 @@ const Form = ({ onSubmit }: { onSubmit: (item: ItemWithoutId) => void }) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    onSubmit({ title, description, category });
   };
 
   const labelStyles = "block leading-none font-medium mb-2 text-sm";
@@ -15,7 +16,7 @@ const Form = ({ onSubmit }: { onSubmit: (item: ItemWithoutId) => void }) => {
   return (
     <div className="max-w-xl">
       <h2 className="font-semibold text-xl mb-2">Add New Task</h2>
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={handleSubmit}>
         <div className="">
           <label htmlFor="title" className={labelStyles}>
             Title
