@@ -10,6 +10,9 @@ const Form = ({ onSubmit }: { onSubmit: (item: ItemWithoutId) => void }) => {
     e.preventDefault();
     if (!title || !description || !category) return;
     onSubmit({ title, description, category });
+    setTitle("");
+    setDescription("");
+    setCategory("");
   };
 
   const labelStyles = "block leading-none font-medium mb-2 text-sm";

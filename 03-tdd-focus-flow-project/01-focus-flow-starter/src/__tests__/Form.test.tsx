@@ -48,4 +48,17 @@ describe("form component", () => {
     await user.click(submitButton);
     expect(mockOnSubmit).not.toHaveBeenCalled();
   });
+  test("reset form input after submission", async () => {
+    const { titleInput, descriptionInput, categorySelect, submitButton } =
+      getFormElements();
+
+    await user.type(titleInput, "title");
+    await user.type(descriptionInput, "task description");
+    await user.selectOptions(categorySelect, "urgent");
+
+    await user.click(submitButton);
+    expect(titleInput).toHaveValue("");
+    expect(descriptionInput).toHaveValue("");
+    expect(categorySelect).toHaveValue("");
+  });
 });
