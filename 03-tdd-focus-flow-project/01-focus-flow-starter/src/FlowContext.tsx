@@ -1,0 +1,35 @@
+import { createContext, useContext, useState } from "react";
+import { Item, ItemWithoutId } from "./utils";
+
+type FlowContextType = {
+  items: Item[];
+  handleAddItem: (newItem: ItemWithoutId) => void;
+  handleDeleteItem: (id: string) => void;
+};
+
+const FlowContext = createContext<FlowContextType | undefined>(undefined);
+
+export const FlowProvider = ({ children }: { children: React.ReactNode }) => {
+  const [items, setItems] = useState<Item[]>([]);
+
+  const handleAddItem = (newItem: ItemWithoutId) => {
+    setItems([...items, { ...newItem, id: Date.now().toString() }]);
+  };
+
+  const handleDeleteItem = (id: string) => {
+    setItems(items.filter((item) => item.id !== id));
+  };
+  return (
+    <FlowContext.Provider value={{ items, handleAddItem, handleDeleteItem }}>
+      {children}
+    </FlowContext.Provider>
+  );
+};
+
+export function useFlowContext() {
+  const context = useContext(FlowContext);
+  if (context === undefined) {
+    throw new Error("useFlowContext must be used within a FlowProvider");
+  }
+  return context;
+}

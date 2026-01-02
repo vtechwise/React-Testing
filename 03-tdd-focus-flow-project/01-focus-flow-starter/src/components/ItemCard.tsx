@@ -35,7 +35,9 @@ const ItemCard = ({
       </div>
       <div className="p-6">
         <p className="text-sm mb-2">{description}</p>
-        <div className={`inline-block ${categoryColors[category]}`}>
+        <div
+          className={`inline-block ${categoryColors[category]} text-white text-xs font-semibold px-2 py-1 rounded`}
+        >
           {category}
         </div>
       </div>
